@@ -7,7 +7,7 @@ const Hero = () => {
     <section id="home" className="flex w-full pb-4 border-b-2 border-gray-200">
       <div className="flex flex-col">
         <h1 className="hero__heading--primary-one">
-          We are delevering filter
+          We are delivering filter
           <span className="text-blue-600"> water</span>
         </h1>
         <h1 className="hero__heading--primary-two">In your area.</h1>

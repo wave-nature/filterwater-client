@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Cookies from "js-cookie";
 import { Link, NavLink } from "react-router-dom";
@@ -21,15 +21,18 @@ const Header = () => {
   const UserDashboard = (
     <>
       <li>
-        <Link to="/user" className="flex items-center">
+        <Link
+          to={user?.role === "user" ? "/user" : "/admin"}
+          className="flex items-center"
+        >
           <img
             src={userImg}
             alt="user"
             className="w-12 h-12 mr-2 rounded-full "
           ></img>
           <p className="text-xl font-semibold">
-            {data.successResponse?.user?.name.split(" ")[0] ||
-              user?.name.split(" ")[0]}
+            {data.successResponse?.user?.name?.split(" ")[0] ||
+              user?.name?.split(" ")[0]}
           </p>
         </Link>
       </li>

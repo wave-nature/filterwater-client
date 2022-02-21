@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Cookies from "js-cookie";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import Input from "../components/Input/Input";
 import Modal from "../components/UI/Modal";
@@ -53,7 +54,11 @@ class Signup extends Component {
     if (prevProps.data.success !== data.success) {
       Cookies.set("token", data.successResponse.token);
       localStorage.setItem("user", JSON.stringify(data.successResponse.user));
+      toast.success("Signed up successfully!");
       history.push("/user");
+    }
+    if (data.error !== prevProps.data.error) {
+      toast.error(data.error?.message);
     }
   }
 

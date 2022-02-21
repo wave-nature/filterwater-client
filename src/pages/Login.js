@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import Input from "../components/Input/Input";
 import { userLoginAction } from "../actions/userAction";
+import { toast } from "react-toastify";
 import Loader from "../components/Loader/Loader";
 
 class Login extends Component {
@@ -30,7 +31,14 @@ class Login extends Component {
     if (data.success !== prevProps.data.success) {
       Cookies.set("token", data.successResponse.token);
       localStorage.setItem("user", JSON.stringify(data.successResponse.user));
-      history.push("/user");
+      toast.success("Successfully logged in");
+      data.successResponse.user.role === "user"
+        ? history.push("/user")
+        : history.push("/admin");
+    }
+
+    if (data.error !== prevProps.data.error) {
+      toast.error(data.error?.message);
     }
   }
 
