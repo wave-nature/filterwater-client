@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Total from "./Total";
 
-const Invoice = () => {
+const Invoice = ({ date, days }) => {
   return (
     <>
       <div className="flex flex-col w-full px-10 py-4 mt-10 bg-slate-100">
@@ -12,7 +12,10 @@ const Invoice = () => {
           title={`Total payable amount till September 30`}
           total={`30x20= Rs 600`}
         />
-        <button className="self-end btn-primary">Pay on 31 January</button>
+        <button className="self-end btn-primary">
+          Pay on {date.toLocaleDateString("en", { month: "long" })}{" "}
+          {days.at(-1)}
+        </button>
       </div>
       <div className="flex justify-between w-full px-10 mx-10 mt-4">
         <div className="text-xl">

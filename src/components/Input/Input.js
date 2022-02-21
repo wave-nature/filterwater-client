@@ -9,7 +9,14 @@ const Input = ({
   id,
   htmlFor,
   value,
+  onChange,
+  name,
 }) => {
+  const onChangeHandler = (e) => {
+    const value = e.target.value;
+    onChange(id, value);
+  };
+
   return (
     <div
       className={`flex justify-between mt-4 mb-2 ${
@@ -25,8 +32,10 @@ const Input = ({
         className="w-2/3 p-2 border-2 border-gray-800 rounded"
         placeholder={placeholder}
         required={isRequired}
+        name={type === "radio" ? name : null}
         minLength={type === "password" ? 8 : null}
-        defaultValue={value}
+        defaultValue={type !== "radio" ? value : null}
+        onChange={(e) => onChangeHandler(e)}
       />
     </div>
   );
