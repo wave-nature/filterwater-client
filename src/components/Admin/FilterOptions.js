@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 
 const FilterOptions = (props) => {
-  const [value, setValue] = useState("Not Delivered");
+  const currentUser = JSON.parse(localStorage.getItem("user"));
   const onSelectHandler = (e) => {
     let filter = "";
     const value = e.target.value;
@@ -18,11 +18,16 @@ const FilterOptions = (props) => {
       case "delivered":
         filter = `deliveryStatus=true`;
         break;
+      case "admins":
+        filter = `role=admin`;
+        break;
+      case "users":
+        filter = `role=user`;
+        break;
       default:
         filter = "";
     }
     props.selectFilter(filter);
-    setValue(e.target.value);
   };
   return (
     <div className="self-start mb-2">
@@ -35,12 +40,19 @@ const FilterOptions = (props) => {
         id="filter"
         className="border-2 border-blue-600 cursor-pointer"
         // value={value}
-        defaultValue={"HELLO"}
+        defaultValue={"Not Delivered"}
       >
+        <option value="not-delivered">Filter By</option>
         <option value="not-delivered">Not Delivered</option>
         <option value="delivered">Delivered</option>
         <option value="10L">10L</option>
         <option value="20L">20L</option>
+        {currentUser.role === "super-admin" && (
+          <>
+            <option value="admins">Admins</option>
+            <option value="users">Users</option>
+          </>
+        )}
       </select>
     </div>
   );

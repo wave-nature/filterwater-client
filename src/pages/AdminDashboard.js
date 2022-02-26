@@ -25,7 +25,7 @@ class AdminDashboard extends Component {
   };
 
   render() {
-    const allUsers = this.props.adminUser?.successResponse.users;
+    const allUsers = this.props.adminUser?.successResponse?.users;
     const loading = this.props.adminUser?.loading;
 
     return (

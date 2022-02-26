@@ -15,3 +15,13 @@ export const userLoginAction = (data) => ({
 export const userLogoutActon = () => ({
   type: "USER_LOGOUT",
 });
+
+export const getMeAction = (token) => {
+  const headers = {
+    Authorization: `Bearer ${token}`,
+  };
+  return {
+    type: "GET_ME",
+    payload: callAPI(`${API_URL}api/users/me`, "GET", null, headers),
+  };
+};

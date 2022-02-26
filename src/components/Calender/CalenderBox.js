@@ -3,14 +3,23 @@ import check from "../../assets/icons/check.png";
 import remove from "../../assets/icons/remove.png";
 
 const CalenderBox = (props) => {
+  const { role, day, delivered, createdAt } = props;
   return (
     <div
       id="box"
-      className="flex flex-col items-center justify-between w-24 h-24 mb-2 mr-2 border-2 border-blue-600"
+      className={`flex flex-col items-center justify-between w-24 h-24 mb-2 mr-2 border-2 border-blue-600 ${
+        delivered === undefined
+          ? ""
+          : delivered
+          ? "bg-green-300 text-white"
+          : "bg-red-400 text-white"
+      }`}
     >
-      <div className="mt-2 text-2xl font-semibold ">{props.day}</div>
-      <div className="text-base text-green-600 ">Success</div>
-      {props.role !== "user" && (
+      <div className="mt-2 text-2xl font-semibold ">{day}</div>
+      <div className="text-base font-bold text-white">
+        {delivered === undefined ? "" : delivered ? "Success" : "Failed"}
+      </div>
+      {role !== "user" && (
         <div className="flex justify-between w-full bg-yellow-200">
           <img
             src={check}

@@ -1,7 +1,7 @@
 import callAPI from "../api/api";
 import { API_URL } from "../api/API_URL";
 
-export const getAllUsersAction = (query = "", token) => {
+export const getAllUsersAction = (query, token) => {
   const headers = {
     Authorization: `Bearer ${token}`,
   };
@@ -18,14 +18,5 @@ export const getUserAction = (id, token) => {
   return {
     type: "GET_USER",
     payload: callAPI(`${API_URL}api/users/${id}`, "GET", null, headers),
-  };
-};
-export const getMeAction = (token) => {
-  const headers = {
-    Authorization: `Bearer ${token}`,
-  };
-  return {
-    type: "GET_ME",
-    payload: callAPI(`${API_URL}api/users/me`, "GET", null, headers),
   };
 };

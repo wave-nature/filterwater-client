@@ -4,10 +4,12 @@ import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import userReducer from "../reducers/userReducer";
 import adminReducer from "../reducers/adminReducer";
+import deliveryReducer from "../reducers/deliveryReducer";
 
 const reducers = combineReducers({
   user: userReducer,
   admin: adminReducer,
+  delivery: deliveryReducer,
 });
 
 const middleware = [thunk, promise];

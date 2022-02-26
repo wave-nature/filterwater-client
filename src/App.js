@@ -45,7 +45,7 @@ class App extends Component {
             <Redirect to="/" />
           )}
           {(userInfo && userInfo.role === "admin") ||
-          (user && user.role === "admin") ? (
+          (user && (user.role === "admin" || user.role === "super-admin")) ? (
             <Route exact path="/admin" component={AdminDashboard} />
           ) : (
             <Redirect to="/" />
@@ -56,8 +56,9 @@ class App extends Component {
           ) : (
             <Redirect to="/" />
           )}
-          {(userInfo && userInfo.role === "admin") ||
-          (user && user.role === "admin") ? (
+          {(userInfo &&
+            (userInfo.role === "admin" || userInfo.role === "super-admin")) ||
+          (user && (user.role === "admin" || user.role === "super-admin")) ? (
             <Route exact path="/user/:id" component={UserDashboard} />
           ) : (
             <Redirect to="/" />
