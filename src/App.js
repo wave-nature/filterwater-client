@@ -44,7 +44,8 @@ class App extends Component {
           ) : (
             <Redirect to="/" />
           )}
-          {(userInfo && userInfo.role === "admin") ||
+          {(userInfo &&
+            (userInfo.role === "admin" || userInfo.role === "super-admin")) ||
           (user && (user.role === "admin" || user.role === "super-admin")) ? (
             <Route exact path="/admin" component={AdminDashboard} />
           ) : (
