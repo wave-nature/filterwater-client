@@ -26,17 +26,27 @@ const Input = ({
       <label htmlFor={htmlFor} className="text-lg font-medium">
         {title}
       </label>
-      <input
-        type={type}
-        id={id}
-        className="w-2/3 p-2 border-2 border-gray-800 rounded"
-        placeholder={placeholder}
-        required={isRequired}
-        name={type === "radio" ? name : null}
-        minLength={type === "password" ? 8 : null}
-        defaultValue={type !== "radio" ? value : null}
-        onChange={(e) => onChangeHandler(e)}
-      />
+      {type !== "textarea" ? (
+        <input
+          type={type}
+          id={id}
+          className="w-2/3 p-2 border-2 border-gray-800 rounded"
+          placeholder={placeholder}
+          required={isRequired}
+          name={type === "radio" ? name : null}
+          minLength={type === "password" ? 8 : null}
+          defaultValue={type !== "radio" ? value : null}
+          onChange={(e) => onChangeHandler(e)}
+        />
+      ) : (
+        <textarea
+          id={id}
+          className="w-2/3 h-32 p-2 border-2 border-gray-800 rounded"
+          placeholder={placeholder}
+          required={isRequired}
+          onChange={(e) => onChangeHandler(e)}
+        ></textarea>
+      )}
     </div>
   );
 };

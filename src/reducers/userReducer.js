@@ -51,6 +51,7 @@ const userReducer = (state = initialState, action) => {
         success: false,
         loading: true,
         error: null,
+        successResponse: {},
       };
     case "GET_ME_FULFILLED":
       return {

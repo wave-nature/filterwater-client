@@ -45,6 +45,7 @@ class AdminDashboard extends Component {
               <UserBox
                 key={user._id}
                 id={user._id}
+                role={user.role}
                 userName={user.name}
                 userImg={user.photo}
                 connectionFor={user.connectionFor}

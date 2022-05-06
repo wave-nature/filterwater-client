@@ -4,7 +4,7 @@ import defaultUserImg from "../../assets/icons/user.png";
 
 const UserBox = (props) => {
   const history = useHistory();
-  const { id, userName, userImg, connectionFor, status } = props;
+  const { id, userName, userImg, connectionFor, status, role } = props;
   const getUserHandler = () => {
     history.push(`/user/${id}`);
   };
@@ -19,7 +19,9 @@ const UserBox = (props) => {
         className="w-12 h-12 rounded-full"
       />
       <div className="text-xl font-bold">{userName}</div>
-      <div className="text-xl font-bold">{connectionFor}L</div>
+      {role === "user" && (
+        <div className="text-xl font-bold">{connectionFor}L</div>
+      )}
       <div className="flex items-center">
         <div className="mr-2 text-xl">
           {status ? "Delivered" : "Not-delivered"}

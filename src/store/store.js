@@ -5,11 +5,15 @@ import promise from "redux-promise-middleware";
 import userReducer from "../reducers/userReducer";
 import adminReducer from "../reducers/adminReducer";
 import deliveryReducer from "../reducers/deliveryReducer";
+import queryReducer from "../reducers/queryReducer";
+import paymentReducer from "../reducers/paymentReducer";
 
 const reducers = combineReducers({
   user: userReducer,
   admin: adminReducer,
   delivery: deliveryReducer,
+  query: queryReducer,
+  payment: paymentReducer,
 });
 
 const middleware = [thunk, promise];

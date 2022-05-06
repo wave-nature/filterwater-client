@@ -12,6 +12,9 @@ import AdminUserQueries from "./pages/AdminUserQueries";
 import { connect } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import UserQueries from "./pages/UserQueries";
+import UserPaymentHistory from "./pages/UserPaymentHistory";
+import AdminPaymentHistory from "./pages/AdminPaymentHistory";
 class App extends Component {
   render() {
     const { data } = this.props;
@@ -40,7 +43,21 @@ class App extends Component {
             <Redirect to="/" />
           )}
           {userInfo || user ? (
+            <Route exact path="/user/queries" component={UserQueries} />
+          ) : (
+            <Redirect to="/" />
+          )}
+          {userInfo || user ? (
             <Route exact path="/myprofile" component={UserProfile} />
+          ) : (
+            <Redirect to="/" />
+          )}
+          {userInfo || user ? (
+            <Route
+              exact
+              path="/user/payment/history"
+              component={UserPaymentHistory}
+            />
           ) : (
             <Redirect to="/" />
           )}
@@ -51,8 +68,8 @@ class App extends Component {
           ) : (
             <Redirect to="/" />
           )}
-          {(userInfo && userInfo.role === "admin") ||
-          (user && user.role === "admin") ? (
+          {(userInfo && userInfo.role === "super-admin") ||
+          (user && user.role === "super-admin") ? (
             <Route exact path="/admin/queries" component={AdminUserQueries} />
           ) : (
             <Redirect to="/" />
@@ -61,6 +78,17 @@ class App extends Component {
             (userInfo.role === "admin" || userInfo.role === "super-admin")) ||
           (user && (user.role === "admin" || user.role === "super-admin")) ? (
             <Route exact path="/user/:id" component={UserDashboard} />
+          ) : (
+            <Redirect to="/" />
+          )}
+          {(userInfo &&
+            (userInfo.role === "admin" || userInfo.role === "super-admin")) ||
+          (user && (user.role === "admin" || user.role === "super-admin")) ? (
+            <Route
+              exact
+              path="/admin/payment/history"
+              component={AdminPaymentHistory}
+            />
           ) : (
             <Redirect to="/" />
           )}

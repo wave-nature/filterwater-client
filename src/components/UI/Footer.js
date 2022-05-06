@@ -54,10 +54,10 @@ const Footer = () => {
       </div>
 
       <div className="flex ">
-        <img src={facebook} alt="" className="w-10 h-10 ml-1" />
-        <img src={linkedin} alt="" className="w-10 h-10 ml-1" />
-        <img src={twitter} alt="" className="w-10 h-10 ml-1" />
-        <img src={youtube} alt="" className="w-10 h-10 ml-1" />
+        <img src={facebook} alt="" className="w-8 h-8 ml-1" />
+        <img src={linkedin} alt="" className="w-8 h-8 ml-1" />
+        <img src={twitter} alt="" className="w-8 h-8 ml-1" />
+        <img src={youtube} alt="" className="w-8 h-8 ml-1" />
       </div>
     </footer>
   );
